@@ -21,18 +21,21 @@ for (let categorie of categories) {
   // on ajoute un click sur "button"
   // on y ajoute une fonction et en parametre un evenement
   button.addEventListener("click", function (event) {
-    // 
+    // on cible avec currentTarget sur chaques evenements click sur bouton
     let target = event.currentTarget;
     let categorieId = target.getAttribute("data-id");
     
+    // la fonction filter : La méthode filter() sur tableau crée un nouveau tableau avec des éléments 
+    // qui répondent à un critère donné à partir d’un tableau existant
+    
+    // sur le tableau works on filtre chaque elements work categoryId 
+    // on associe a chaque boutton son tableau correspondant avec le contenu recuperé
+    // puis on affiche ce contenu 
     let worksFiltered = works.filter(function (work) {
-      // console.log(work);
       if(work.categoryId == categorieId){
         return work;
       }
-      
     });
-
     console.log(worksFiltered);
   });
 }
@@ -42,10 +45,24 @@ const works = await reponses.json();
 
 for (let work of works) {
   let worksProjects = work.imageUrl;
+  let figcaption = work.title;
+  // let figureImg = work.;
+  
+  // console.log(works);
+ 
 
-  let projects = document.createElement("img");
-  projects.src = worksProjects;
-  document.getElementById("gallery").appendChild(projects);
+  // let figure = document.createElement("figure");
+  // figure.innerHTML = figureImg;
+  // document.getElementById("gallery").appendChild(figure);
+
+  let project = document.createElement("img");
+  project.src = worksProjects;
+  document.getElementById("gallery").appendChild(project);
+
+  let figcaptionImg = document.createElement("figcaption");
+  figcaptionImg.innerHTML = figcaption;
+  document.getElementById("gallery").appendChild(figcaptionImg);
+  
 
   
 }
