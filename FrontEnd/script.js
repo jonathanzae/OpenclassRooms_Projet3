@@ -55,22 +55,22 @@ console.log(works);
 
 for (let work of works) {
   let worksProjects = work.imageUrl;
-  // let figcaption = work.title;
+  let figcaption = work.title;
   // let figureImg = work.;
 
   // console.log(works);
 
-  // let figure = document.createElement("figure");
-  // figure.innerHTML;
-  // document.getElementById("gallery").appendChild(figure);
+  let figure = document.createElement("figure");
+  figure.innerHTML;
+  document.getElementById("gallery").appendChild(figure);
 
   let project = document.createElement("img");
   project.src = worksProjects;
   project.setAttribute("img-id" , work.categoryId)
   document.getElementById("gallery").appendChild(project);
 
-  // // let figcaptionImg = document.createElement("figcaption");
-  // // figcaptionImg.innerHTML = figcaption;
-  // // document.getElementById("gallery").appendChild(figcaptionImg);
+  let figcaptionImg = document.createElement("figcaption");
+  figcaptionImg.innerHTML = figcaption;
+  document.getElementById("gallery").appendChild(figcaptionImg);
   
 }
