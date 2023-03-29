@@ -4,10 +4,10 @@ const categories = await reponse.json();
 
 // console.log(categories);
 
-let button1 = document.createElement("button");
-button1.innerText;
-button1.setAttribute("data-id", categories);
-document.getElementById("filters").appendChild(button1);
+let buttonAll = document.createElement("button");
+buttonAll.innerText;
+buttonAll.setAttribute("data-id", categories);
+document.getElementById("filters").appendChild(buttonAll);
 
 // on creer une boucle pour parcourir le tableau
 for (let categorie of categories) {
@@ -44,29 +44,33 @@ for (let categorie of categories) {
         return work;
       }
     });
-    console.log(worksFiltered);
+     console.log(worksFiltered);
   });
 }
 
 const reponses = await fetch("http://localhost:5678/api/works");
 const works = await reponses.json();
 
+console.log(works);
+
 for (let work of works) {
   let worksProjects = work.imageUrl;
-  let figcaption = work.title;
+  // let figcaption = work.title;
   // let figureImg = work.;
 
   // console.log(works);
 
-  let figure = document.createElement("figure");
-  figure.innerHTML;
-  document.getElementById("gallery").appendChild(figure);
+  // let figure = document.createElement("figure");
+  // figure.innerHTML;
+  // document.getElementById("gallery").appendChild(figure);
 
   let project = document.createElement("img");
   project.src = worksProjects;
+  project.setAttribute("img-id" , work.categoryId)
   document.getElementById("gallery").appendChild(project);
 
-  let figcaptionImg = document.createElement("figcaption");
-  figcaptionImg.innerHTML = figcaption;
-  document.getElementById("gallery").appendChild(figcaptionImg);
+  // // let figcaptionImg = document.createElement("figcaption");
+  // // figcaptionImg.innerHTML = figcaption;
+  // // document.getElementById("gallery").appendChild(figcaptionImg);
+  
 }
