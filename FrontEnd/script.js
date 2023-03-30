@@ -71,4 +71,6 @@ for (let work of works) {
   figure.appendChild(figcaptionImg);
 
   document.getElementById("gallery").appendChild(figure);
+
+  // figure.remove();
 }
