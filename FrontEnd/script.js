@@ -27,12 +27,14 @@ for (let categorie of categories) {
   // on ajoute un click sur "button"
   // on y ajoute une fonction et en parametre un evenement
   button.addEventListener("click", function (event) {
+
     // on cible avec currentTarget sur chaques evenements click sur bouton
     let target = event.currentTarget;
     // on appel a l'evenement click l'id du tableau creer grace setAttribute
     //
     let categorieId = target.getAttribute("data-id");
-
+   
+    
     // la fonction filter : La méthode filter() sur tableau crée un nouveau tableau avec des éléments
     // qui répondent à un critère donné à partir d’un tableau existant
 
@@ -44,14 +46,21 @@ for (let categorie of categories) {
         return work;
       }
     });
-    console.log(worksFiltered);
+    let deleteArray = works.splice();
+    console.log(deleteArray);
+
+    let viewNewArray = worksFiltered.splice(worksFiltered);
+    console.log(viewNewArray);
+
+
   });
 }
 
 const reponses = await fetch("http://localhost:5678/api/works");
 const works = await reponses.json();
 
-console.log(works);
+
+
 
 for (let work of works) {
   let imageUrl = work.imageUrl;
@@ -69,4 +78,13 @@ for (let work of works) {
   figure.appendChild(figcaptionImg);
 
   document.getElementById("gallery").appendChild(figure);
+
+  
+
+  
+  
+  
+    
+  //   let viewArray = works.splice();
+  //   console.log();
 }
