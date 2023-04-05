@@ -2,12 +2,15 @@
 const reponse = await fetch("http://localhost:5678/api/categories");
 const categories = await reponse.json();
 
-// console.log(categories);
-
 let buttonAll = document.createElement("button");
 buttonAll.innerText = "Tous";
 buttonAll.setAttribute("data-id", 0);
 document.getElementById("filters").appendChild(buttonAll);
+
+buttonAll.addEventListener("click", function (event){
+  
+  displayWorks(works);
+});
 
 // on creer une boucle pour parcourir le tableau
 for (let categorie of categories) {
@@ -41,36 +44,42 @@ for (let categorie of categories) {
     // puis on affiche ce contenu
     let worksFiltered = works.filter(function (work) {
       if (work.categoryId == categorieId) {
-        return work;
+        return works;
       }
     });
-    let deleteArray = works.splice();
-    console.log(deleteArray);
-
-    let viewNewArray = worksFiltered.splice(worksFiltered);
-    console.log(viewNewArray);
-  });
+    displayWorks(worksFiltered);
+  });   
 }
 
 const reponses = await fetch("http://localhost:5678/api/works");
 const works = await reponses.json();
 
-for (let work of works) {
-  let imageUrl = work.imageUrl;
-  let figcaption = work.title;
+// console.log(works);
 
-  let figure = document.createElement("figure");
+displayWorks(works);
 
-  let image = document.createElement("img");
-  image.src = imageUrl;
-  image.setAttribute("img-id", work.categoryId);
-  figure.appendChild(image);
+function displayWorks(worksArray) {
 
-  let figcaptionImg = document.createElement("figcaption");
-  figcaptionImg.innerHTML = figcaption;
-  figure.appendChild(figcaptionImg);
+  document.getElementById("gallery").innerHTML = "";
 
-  document.getElementById("gallery").appendChild(figure);
+  for (let work of worksArray) {
+    let imageUrl = work.imageUrl;
+    let figcaption = work.title;
+  
+    let figure = document.createElement("figure");
+  
+    let image = document.createElement("img");
+    image.src = imageUrl;
+    // image.setAttribute("img-id", work.categoryId);
+    figure.appendChild(image);
+  
+    let figcaptionImg = document.createElement("figcaption");
+    figcaptionImg.innerHTML = figcaption;
+    figure.appendChild(figcaptionImg);
+  
+    document.getElementById("gallery").appendChild(figure);
+  }
 
-  // figure.remove();
-}
+ }
+
+
