@@ -29,10 +29,15 @@ body: JSON.stringify(body)
 });
 const login = await reponse.json();
 
+console.log(login);
+console.log(body);
+
+let storageToken = window.localStorage.getItem(login.token)
+
 if(reponse.status == 404){
   alert('Erreur dans l’identifiant ou le mot de passe');
 }else{
-  
+  window.localStorage.setItem(login.token, storageToken);
 }
 });
 
