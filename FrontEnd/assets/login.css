@@ -1,3 +1,7 @@
+body {
+    background-color: #E5E5E5;
+}
+
 main {
     margin-top: 100px;
 }
@@ -38,4 +42,8 @@ label {
 #submitInput {
     height: 36px;
     margin: 0;
+}
+
+#loginFooter {
+    margin-top:260px;
 }
