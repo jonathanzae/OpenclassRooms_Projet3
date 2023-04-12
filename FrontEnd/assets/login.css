@@ -2,6 +2,10 @@ body {
     background-color: #E5E5E5;
 }
 
+#currentPage {
+    font-weight: bolder;
+}
+
 main {
     margin-top: 100px;
 }
@@ -44,6 +48,10 @@ label {
     margin: 0;
 }
 
+#passwordLost {
+    color:#3D3D3D;
+}
+
 #loginFooter {
-    margin-top:260px;
+    margin-top:230px;
 }
