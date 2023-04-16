@@ -9,28 +9,38 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<link rel="stylesheet" href="./assets/modal.css">
+    <link rel="stylesheet" href="./assets/modal.css">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
 </head>
 <body>
+    <div id="modalLink">
+        <div id="modalMenu">
+			<!-- ouverture modale -->
+            <a href="#" role="button" data-target="#modal" id="edition"><i class="fa-solid fa-pen-to-square"></i> Mode édition</a>
+            <button>publier les changements</button>
+        </div>
+    </div>
 <header>
+    
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="login.html" id="aLogin">login</a></li>
+			<li>login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
 	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
+        <figure id="change">
+            <img src="./assets/images/sophie-bluel.png" alt="">
+            <a href="#" id="imgChanges"><i class="fa-solid fa-pen-to-square"></i> modifier</a>
+        </figure>
+        
 		<article>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
@@ -39,13 +49,15 @@
 		</article>
 	</section>
 	<section id="portfolio">
+        <div id="projectsChanges">
 		<h2>Mes Projets</h2>
-		
+        <a href="#"><i class="fa-solid fa-pen-to-square"></i> modifier</a>
+		</div>
 		<div id="filters">
 		</div>
 	    
 		<div id="gallery">
-			<!-- <figure>
+			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
 			</figure>
@@ -88,7 +100,7 @@
 			<figure>
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure> -->
+			</figure>
 		</div>
 	</section>
 	<section id="contact">
@@ -114,7 +126,12 @@
 	</nav>
 </footer>
 
-<script type="module" src="script.js"></script>
+<!-- modal -->
+<div class="modal" id="modal" role="dialog">
+	<div clas="modalContent"></div>
+</div>
+
+<script src=""></script>
 
 </body>
 </html>

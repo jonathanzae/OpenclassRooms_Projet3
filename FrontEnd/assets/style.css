@@ -98,6 +98,13 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+/* modifier */
+
+#aLogin {
+	text-decoration: none;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;

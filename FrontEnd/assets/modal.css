@@ -1,0 +1,55 @@
+#modalLink {
+    position:fixed;
+    background-color: #000000;
+    height: 59px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    top:0;
+    right:0;
+    left:0;
+}
+
+#modalMenu {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#edition {
+    text-decoration: none;
+    color: #ffff;
+}
+
+#modalLink button {
+    background-color: #ffff;
+    border-radius: 60px;
+    width: 216px;
+    height: 38px;
+    font-size: 14px;
+}
+
+.modal{
+    background-color: rgba(0, 0, 0, 0.3);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    right:0;
+    z-index: 1000;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.modalContent {
+    background-color:white;
+    width: 630px;
+    height: 731px;
+    border-radius: 10px;
+
+}
