@@ -1,5 +1,5 @@
 #modalLink {
-    position:fixed;
+    position: sticky;
     background-color: #000000;
     height: 59px;
     width: 100%;
@@ -32,24 +32,49 @@
     font-size: 14px;
 }
 
-.modal{
-    background-color: rgba(0, 0, 0, 0.3);
+#modal{
+    background-color: #ffff;
     position:fixed;
-    top:0;
-    right:0;
-    bottom:0;
-    right:0;
+    top: 150px;
+    left: calc(50% - 250px);
     z-index: 1000;
-    display: flex;
+    display: block;
     visibility: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: 0.2s;
+    width: 500px;
+    height: 500px;
 }
 
-.modalContent {
+.modalHeader {
+    margin-bottom: 30px;
+}
+
+#closed {
+    display:flex;
+    justify-content: flex-end;
+    font-size: x-large;
+    padding: 6px;
+}
+
+.galleryPictures {
+    display: flex;
+    justify-content: center;
+    color:#000000;
+}
+
+.modalBody {
+    
+    
+}
+
+.modalFooter {
+    border-top: solid 1px #b3b3b3;
+}
+
+/* .modalContent {
     background-color:white;
     width: 630px;
     height: 731px;
     border-radius: 10px;
-
-}
+} */

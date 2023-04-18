@@ -228,3 +228,14 @@ footer nav ul {
 	margin: 2em
 }
 
+.buttonEdit {
+	display: none;
+}
+
+
+.edit2 {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 20px;
+}

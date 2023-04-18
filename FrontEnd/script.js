@@ -1,3 +1,36 @@
+let token = localStorage.getItem("token");
+
+console.log(token);
+
+if(token != null){
+  let buttonEdit = document.getElementsByClassName("buttonEdit");
+  for (let i=0; i<buttonEdit.length; i+=1){
+    buttonEdit[i].style.display = 'block';
+  }
+}
+
+let buttonEditClick = document.getElementsByClassName("buttonEdit");
+
+for (var i = 0; i < buttonEditClick.length; i++) {
+  buttonEditClick[i].addEventListener("click", function(){
+    let activateModal = document.getElementById("modal");
+
+    activateModal.style.visibility = "visible";
+  });
+}
+
+let closedButton = document.getElementById("closed");
+
+closedButton.addEventListener("click", function(){
+  let closedModal = document.getElementById("modal");
+
+  closedModal.style.visibility = "hidden";
+});
+// let modalTitle = document.getElementById("modal");
+
+// modalTitle.innerHTML = "Galerie photo";
+
+
 // appel à l'api grace  fetch
 const reponse = await fetch("http://localhost:5678/api/categories");
 const categories = await reponse.json();
