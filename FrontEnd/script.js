@@ -26,9 +26,45 @@ closedButton.addEventListener("click", function(){
 
   closedModal.style.visibility = "hidden";
 });
-// let modalTitle = document.getElementById("modal");
 
-// modalTitle.innerHTML = "Galerie photo";
+
+
+const reponse3 = await fetch("http://localhost:5678/api/works");
+const worksModal = await reponse3.json();
+
+console.log(worksModal);
+
+for (let works of worksModal) {
+
+  let categoryModal = works.imageUrl;
+
+  let imageCategory = document.createElement("img");
+  imageCategory.src = categoryModal;
+  document.getElementById("galleryModal").appendChild(imageCategory);
+
+  let edit = document.createElement("p");
+  edit.innerHTML = "Editer";
+  document.getElementById("galleryModal").appendChild(edit);
+  
+}
+
+let buttonAdd = document.createElement("button");
+buttonAdd.innerHTML = "Ajouter une photo";
+document.getElementById("modalFooter").appendChild(buttonAdd);
+
+buttonAdd.addEventListener("click", function (){
+    alert("clique valide");
+});
+
+let deleteGallery = document.createElement("a");
+deleteGallery.innerHTML = "Supprimer la galerie";
+document.getElementById("modalFooter").appendChild(deleteGallery);
+
+deleteGallery.addEventListener("click", function (){
+  alert("clique valide");
+});
+
+
 
 
 // appel à l'api grace  fetch
