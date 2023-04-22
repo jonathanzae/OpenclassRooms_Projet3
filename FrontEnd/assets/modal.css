@@ -55,7 +55,7 @@
 #closed {
     display:flex;
     justify-content: flex-end;
-    font-size: x-large;
+    font-size: xx-large;
     padding: 6px;
 }
 
@@ -63,9 +63,6 @@
     display: flex;
     justify-content: center;
     color:#000000;
-}
-
-.modalBody {
 }
 
 #galleryModal {
@@ -79,12 +76,9 @@
     padding: 5px;
 }
 
-#galleryModal p {
-
-}
-
 #borderGray {
     border-top: solid 1px #b3b3b3;
+    width:420px;
 }
 
 #modalFooter {
@@ -111,10 +105,3 @@
     color: #D65353;
     font-family: 'Syne';
 }
-
-/* .modalContent {
-    background-color:white;
-    width: 630px;
-    height: 731px;
-    border-radius: 10px;
-} */
