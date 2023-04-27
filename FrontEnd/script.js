@@ -1,5 +1,8 @@
 let token = localStorage.getItem("token");
 
+const reponses = await fetch("http://localhost:5678/api/works");
+const works = await reponses.json();
+
 console.log(token);
 
 if (token != null) {
@@ -7,6 +10,8 @@ if (token != null) {
   for (let i = 0; i < buttonEdit.length; i += 1) {
     buttonEdit[i].style.display = "block";
   }
+
+  
 }
 
 let buttonEditClick = document.getElementsByClassName("buttonEdit");
@@ -14,9 +19,13 @@ let buttonEditClick = document.getElementsByClassName("buttonEdit");
 for (var i = 0; i < buttonEditClick.length; i++) {
   buttonEditClick[i].addEventListener("click", function () {
     let activateModal = document.getElementById("modal");
-
+    displayModalGallery(works);
     activateModal.style.visibility = "visible";
+
+    document.getElementById("overlay").style.display = "block";
+
   });
+  
 }
 
 let closedButton = document.getElementById("closed");
@@ -25,23 +34,29 @@ closedButton.addEventListener("click", function () {
   let closedModal = document.getElementById("modal");
 
   closedModal.style.visibility = "hidden";
+
+  document.getElementById("overlay").style.display = "none";
 });
 
-const reponse3 = await fetch("http://localhost:5678/api/works");
-const worksModal = await reponse3.json();
+function displayModalGallery(works) {
+  for (let work of works) {
+  let categoryModal = work.imageUrl;
 
-console.log(worksModal);
+  let divCategory = document.createElement("div");
 
-for (let works of worksModal) {
-  let categoryModal = works.imageUrl;
+  // let iconCross = document.createElement("i");
+  // iconCross.innerHTML = camera;
+  // divCategory.appendChild(iconCross);
 
   let imageCategory = document.createElement("img");
   imageCategory.src = categoryModal;
-  document.getElementById("galleryModal").appendChild(imageCategory);
+  divCategory.appendChild(imageCategory);
 
   let edit = document.createElement("p");
   edit.innerHTML = "Editer";
-  document.getElementById("galleryModal").appendChild(edit);
+  divCategory.appendChild(edit);
+
+  document.getElementById("galleryModal").appendChild(divCategory);
 }
 
 let buttonAdd = document.createElement("button");
@@ -49,16 +64,32 @@ buttonAdd.innerHTML = "Ajouter une photo";
 document.getElementById("modalFooter").appendChild(buttonAdd);
 
 buttonAdd.addEventListener("click", function () {
-  alert("clic valide");
+  document.getElementById("modal").style.visibility = "hidden";
+  displayModalForm();
 });
 
-let deleteGallery = document.createElement("a");
+let deleteGallery = document.createElement("p");
 deleteGallery.innerHTML = "Supprimer la galerie";
 document.getElementById("modalFooter").appendChild(deleteGallery);
 
 deleteGallery.addEventListener("click", function () {
   alert("clic valide");
 });
+}
+
+
+function displayModalForm() {
+
+  document.getElementById("modalForm").style.visibility = "visible";
+
+  // let crossClosed = document.createElement("a");
+  // crossClosed.innerHTML = "X";
+  // document.getElementById("modalHeader").appendChild(crossClosed);
+
+  // let titleForm = document.createElement("h2");
+  // titleForm.innerHTML = "Ajout photo";
+  // document.getElementById("modalHeader").appendChild(titleForm);
+}
 
 // appel à l'api grace  fetch
 const reponse = await fetch("http://localhost:5678/api/categories");
@@ -112,8 +143,7 @@ for (let categorie of categories) {
   });
 }
 
-const reponses = await fetch("http://localhost:5678/api/works");
-const works = await reponses.json();
+
 
 // console.log(works);
 

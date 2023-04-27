@@ -10,6 +10,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/modal.css">
+	<link rel="stylesheet" href="./assets/modalForm.css">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
@@ -17,8 +18,7 @@
 <body>
 	<div id="modalLink">
         <div id="modalMenu">
-			<!-- ouverture modale -->
-            <a href="#" role="button" data-target="#modal" id="edition"><i class="fa-solid fa-pen-to-square"></i> Mode édition</a>
+            <a href="#" role="button" data-target="#modal" id="edition"><i class="fa-regular fa-pen-to-square"></i> Mode édition</a>
             <button>publier les changements</button>
         </div>
     </div>
@@ -37,22 +37,27 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
-			<!-- Boutton modifier modal 1 -->
+		<div class="edit1">
+			<a href="#" class="buttonEditNull1"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
+		</div>
 		</figure>
 		
 		<article>
+			<div class="edit2">
+				<a href="#" class="buttonEditNull2"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
+			</div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
-		<p class="buttonEdit"><i class="fa-solid fa-pen-to-square"></i> Modifier</p>
+		
 	</section>
 	<section id="portfolio">
-		<div class="edit2">
+		<div class="edit3">
 			<h2>Mes Projets</h2>
-			<!-- Boutton modifier modal 2 -->
-			<p class="buttonEdit"><i class="fa-solid fa-pen-to-square"></i> modifier</p>
+			<!-- Boutton afficher modal -->
+			<a href="#" class="buttonEdit"><i class="fa-regular fa-pen-to-square"></i> modifier</a>
 		</div>
 
 		<div id="filters">
@@ -130,12 +135,12 @@
 
 <!-- modal -->
 <div id="modal" role="dialog">
-	<div class="modalContent">
-		<div class="modalHeader">
-		    <span id="closed">&times;</span>
+	<div id="modalContent">
+		<div id="modalHeader">
+		    <a href="#" id="closed">&times;</a>
 	       <h2 class="galleryPictures">Galerie photo</h2>
 		</div>
-		<div class="modalBody">
+		<div id="modalBody">
             <div id="galleryModal">
                 
 			</div>
@@ -144,8 +149,33 @@
 		<div id="modalFooter">
 
 		</div>
+
+		
     </div>
 </div>
+
+<div id="modalForm" role="dialog">
+	<div id="modalFormContent">
+		<div id="modalFormHeader">
+			<a href="#" id="back"><i class="fa-solid  fa-arrow-left fa-3x"></i></a>
+			<a href="#" id="closed2"><i class="fa-solid  fa-xmark-large fa-3x"></i></a>
+			<h2 id="h2Title">Ajout photo</h2>
+		</div>
+		<div id="modalFormBody">
+			<div id="addContent">
+				<a href="#" id="addPictures"><i class="fa-regular fa-image fa-4x"></i></a>
+
+			</div>
+			<div id="form"></div>
+
+		</div>
+		<div id="modalFormFooter">
+
+		</div>
+	</div>
+</div>
+
+<div id="overlay"></div>
 
 <script type="module" src="script.js"></script>
 

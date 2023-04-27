@@ -48,7 +48,7 @@
     border-radius: 10px;
 }
 
-.modalHeader {
+#modalHeader {
     margin-bottom: 30px;
 }
 
@@ -68,12 +68,25 @@
 #galleryModal {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 20px;
 }
 
-#galleryModal img{
-    width: 15%;
-    height: 10%;
-    padding: 5px;
+#galleryModal div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: calc(20%);
+}
+
+#galleryModal img {
+    display: flex;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    gap: 10px;
+    width: 90px;
+    height: 110px;
 }
 
 #borderGray {
@@ -88,7 +101,7 @@
 }
 
 #modalFooter button {
-    margin-top: 30px;
+    margin-top: 20px;
     color:#ffff;
     background-color: #1D6154;
     border-radius: 60px;
@@ -100,7 +113,7 @@
     font-family: 'Syne';
 }
 
-#modalFooter a {
+#modalFooter p {
     margin-top: 20px;
     color: #D65353;
     font-family: 'Syne';

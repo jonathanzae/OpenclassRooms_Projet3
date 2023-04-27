@@ -1,0 +1,53 @@
+#modalForm {
+    background-color: #ffff;
+    /* background-color: aqua; */
+    position:fixed;
+    top: 100px;
+    left: calc(50% - 250px);
+    z-index: 1000;
+    display: block;
+    visibility: hidden;
+    opacity: 1;
+    transition: 0.2s;
+    width: 630px;
+    height: 640px;
+    border-radius: 10px;
+}
+
+#closed2 i {
+    /* width:12px;
+    height:12px;
+    top: 6px;
+    right: 6px; */
+    display:flex;
+    justify-content: flex-end;
+    font-size: xx-large;
+    padding: 6px;
+}
+
+#h2Title {
+    font-family: 'Work Sans';
+    font-weight: 400;
+    font-size: 26px;
+    color:#000000;
+    display: flex;
+    justify-content: center;
+}
+
+#addContent {
+    background-color: #E8F1F6;
+    width: 420px;
+    height: 169px;
+    border-radius: 3px;
+    margin-top: 36px;
+    margin-right: 105px;
+    margin-left: 105px;
+}
+
+#addPictures i {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    margin-top: 28px;
+    color: #B9C5CC;
+}
