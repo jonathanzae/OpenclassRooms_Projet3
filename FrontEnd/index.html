@@ -157,16 +157,32 @@
 <div id="modalForm" role="dialog">
 	<div id="modalFormContent">
 		<div id="modalFormHeader">
-			<a href="#" id="back"><i class="fa-solid  fa-arrow-left fa-3x"></i></a>
-			<a href="#" id="closed2"><i class="fa-solid  fa-xmark-large fa-3x"></i></a>
+			<div id="choice">
+				<a href="#" id="back"><i class="fa-solid  fa-arrow-left"></i></a>
+				<a href="#" id="closed2">&times;</a>
+		    </div>
+			
 			<h2 id="h2Title">Ajout photo</h2>
 		</div>
 		<div id="modalFormBody">
 			<div id="addContent">
-				<a href="#" id="addPictures"><i class="fa-regular fa-image fa-4x"></i></a>
+				<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
 
 			</div>
-			<div id="form"></div>
+			<form id="form">
+				<div id="DivTitle">
+					<label class="label" for="text">Titre</label>
+					<input type="text" id="title">
+				</div>
+				<div id="DivCategory">
+					<label class="label" for="text">Catégorie</label>
+					<input type="text" id="category">
+				</div>
+				<hr id="grayBorder"></hr>
+				<div id="validateForm">
+
+				</div>
+			</form>
 
 		</div>
 		<div id="modalFormFooter">

@@ -53,13 +53,17 @@
 }
 
 #closed {
-    display:flex;
-    justify-content: flex-end;
+    text-decoration: none;
+    color: #000000;
+    position: absolute;
+    top: 6px;
+    right: 6px;
     font-size: xx-large;
     padding: 6px;
 }
 
 .galleryPictures {
+    padding-top: 50px;
     display: flex;
     justify-content: center;
     color:#000000;

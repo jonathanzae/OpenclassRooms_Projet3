@@ -10,8 +10,6 @@ if (token != null) {
   for (let i = 0; i < buttonEdit.length; i += 1) {
     buttonEdit[i].style.display = "block";
   }
-
-  
 }
 
 let buttonEditClick = document.getElementsByClassName("buttonEdit");
@@ -23,9 +21,7 @@ for (var i = 0; i < buttonEditClick.length; i++) {
     activateModal.style.visibility = "visible";
 
     document.getElementById("overlay").style.display = "block";
-
   });
-  
 }
 
 let closedButton = document.getElementById("closed");
@@ -40,56 +36,77 @@ closedButton.addEventListener("click", function () {
 
 function displayModalGallery(works) {
   for (let work of works) {
-  let categoryModal = work.imageUrl;
+    let categoryModal = work.imageUrl;
 
-  let divCategory = document.createElement("div");
+    let divCategory = document.createElement("div");
 
-  // let iconCross = document.createElement("i");
-  // iconCross.innerHTML = camera;
-  // divCategory.appendChild(iconCross);
+    // let iconCross = document.createElement("i");
+    // iconCross.innerHTML = camera;
+    // divCategory.appendChild(iconCross);
 
-  let imageCategory = document.createElement("img");
-  imageCategory.src = categoryModal;
-  divCategory.appendChild(imageCategory);
+    let imageCategory = document.createElement("img");
+    imageCategory.src = categoryModal;
+    divCategory.appendChild(imageCategory);
 
-  let edit = document.createElement("p");
-  edit.innerHTML = "Editer";
-  divCategory.appendChild(edit);
+    let edit = document.createElement("p");
+    edit.innerHTML = "Editer";
+    divCategory.appendChild(edit);
 
-  document.getElementById("galleryModal").appendChild(divCategory);
+    document.getElementById("galleryModal").appendChild(divCategory);
+  }
+
+  let buttonAdd = document.createElement("button");
+  buttonAdd.innerHTML = "Ajouter une photo";
+  document.getElementById("modalFooter").appendChild(buttonAdd);
+
+  buttonAdd.addEventListener("click", function () {
+    document.getElementById("modal").style.visibility = "hidden";
+    displayModalForm();
+  });
+
+  let deleteGallery = document.createElement("p");
+  deleteGallery.innerHTML = "Supprimer la galerie";
+  document.getElementById("modalFooter").appendChild(deleteGallery);
+
+  deleteGallery.addEventListener("click", function () {
+    alert("clic valide");
+  });
 }
-
-let buttonAdd = document.createElement("button");
-buttonAdd.innerHTML = "Ajouter une photo";
-document.getElementById("modalFooter").appendChild(buttonAdd);
-
-buttonAdd.addEventListener("click", function () {
-  document.getElementById("modal").style.visibility = "hidden";
-  displayModalForm();
-});
-
-let deleteGallery = document.createElement("p");
-deleteGallery.innerHTML = "Supprimer la galerie";
-document.getElementById("modalFooter").appendChild(deleteGallery);
-
-deleteGallery.addEventListener("click", function () {
-  alert("clic valide");
-});
-}
-
 
 function displayModalForm() {
-
   document.getElementById("modalForm").style.visibility = "visible";
-
-  // let crossClosed = document.createElement("a");
-  // crossClosed.innerHTML = "X";
-  // document.getElementById("modalHeader").appendChild(crossClosed);
-
-  // let titleForm = document.createElement("h2");
-  // titleForm.innerHTML = "Ajout photo";
-  // document.getElementById("modalHeader").appendChild(titleForm);
 }
+let closedButton2 = document.getElementById("closed2");
+
+closedButton2.addEventListener("click", function () {
+  let closedModal = document.getElementById("modalForm");
+
+  closedModal.style.visibility = "hidden";
+
+  document.getElementById("overlay").style.display = "none";
+});
+
+let backModal = document.getElementById("back");
+
+backModal.addEventListener("click", function () {
+  document.getElementById("modalForm").style.visibility = "hidden";
+
+  document.getElementById("modal").style.visibility = "visible";
+});
+
+let addPictures = document.createElement("button");
+addPictures.innerHTML = "+ Ajouter photo";
+document.getElementById("addContent").appendChild(addPictures);
+
+let infosPicture = document.createElement("p");
+infosPicture.innerHTML = "jpg, png : 4mo max";
+document.getElementById("addContent").appendChild(infosPicture);
+
+let buttonValidate = document.createElement("button");
+buttonValidate.innerHTML = "Valider";
+document.getElementById("validateForm").appendChild(buttonValidate);
+
+
 
 // appel à l'api grace  fetch
 const reponse = await fetch("http://localhost:5678/api/categories");
@@ -142,8 +159,6 @@ for (let categorie of categories) {
     displayWorks(worksFiltered);
   });
 }
-
-
 
 // console.log(works);
 
