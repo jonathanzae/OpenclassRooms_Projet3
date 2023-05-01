@@ -68,7 +68,11 @@
     color: #B9C5CC;
 }
 
-#addContent button {
+/* input[type="file"] {
+    
+}
+
+#labelPicture {
     margin-top: 20px;
     border-radius: 50px;
     background-color: #CBD6DC;
@@ -79,7 +83,7 @@
     font-size: 14px;
     font-weight: 500;
     font-family: 'Work Sans';
-}
+} */
 
 #addContent p {
     color: #444444;

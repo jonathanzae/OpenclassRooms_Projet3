@@ -17,7 +17,7 @@ let buttonEditClick = document.getElementsByClassName("buttonEdit");
 for (var i = 0; i < buttonEditClick.length; i++) {
   buttonEditClick[i].addEventListener("click", function () {
     let activateModal = document.getElementById("modal");
-    
+
     activateModal.style.visibility = "visible";
 
     document.getElementById("overlay").style.display = "block";
@@ -40,11 +40,11 @@ buttonAdd.innerHTML = "Ajouter une photo";
 document.getElementById("modalFooter").appendChild(buttonAdd);
 
 buttonAdd.addEventListener("click", function () {
-document.getElementById("modal").style.visibility = "hidden";
-    // displayModalForm();
-document.getElementById("modalForm").style.visibility = "visible";
+  document.getElementById("modal").style.visibility = "hidden";
+  // displayModalForm();
+  document.getElementById("modalForm").style.visibility = "visible";
 });
-  
+
 let deleteGallery = document.createElement("p");
 deleteGallery.innerHTML = "Supprimer la galerie";
 document.getElementById("modalFooter").appendChild(deleteGallery);
@@ -57,15 +57,12 @@ function displayModalGallery(works) {
   for (let work of works) {
     let categoryModal = work.imageUrl;
 
-
     let divCategory = document.createElement("div");
-
-    let divImage = document.createElement("div");
 
     let imageCategory = document.createElement("img");
     imageCategory.src = categoryModal;
     divCategory.appendChild(imageCategory);
-    
+
     let iconCross = document.createElement("i");
     iconCross.setAttribute("class", `fa-solid fa-arrows-up-down-left-right`);
     divCategory.appendChild(iconCross);
@@ -74,19 +71,16 @@ function displayModalGallery(works) {
     iconWasteBin.setAttribute("class", "fa-sharp fa-regular fa-trash-can");
     divCategory.appendChild(iconWasteBin);
 
-    imageCategory.appendChild(divImage);
-
     let edit = document.createElement("p");
     edit.innerHTML = "Editer";
     divCategory.appendChild(edit);
 
     document.getElementById("galleryModal").appendChild(divCategory);
   }
-  
 }
 
 // function displayModalForm() {
-  
+
 // }
 let closedButton2 = document.getElementById("closed2");
 
@@ -105,6 +99,7 @@ backModal.addEventListener("click", function () {
 
   document.getElementById("modal").style.visibility = "visible";
 });
+
 // let addPictures = document.createElement("button");
 // addPictures.innerHTML = "+ Ajouter photo";
 // document.getElementById("addContent").appendChild(addPictures);
@@ -122,8 +117,6 @@ let form = document.getElementById("form");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault;
-
-  // sortCategorie(categories);
 
   // console.log("test");
   // let formData = new FormData(form);

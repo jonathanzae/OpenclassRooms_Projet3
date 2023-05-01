@@ -75,8 +75,8 @@
     padding-left: 60px;
     padding-right: 60px;
     padding-bottom: 20px;
-    overflow-y: scroll;
-    max-height: 300px;
+    /* overflow-y: scroll;
+    max-height: 300px; */
 }
 
 #galleryModal div{
@@ -84,6 +84,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: calc(20%);
+    position: relative;
 }
 
 #galleryModal img {
@@ -93,6 +94,37 @@
     gap: 10px;
     width: 90px;
     height: 110px;
+}
+
+#galleryModal i.fa-solid.fa-arrows-up-down-left-right {
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    width: 17px;
+    height: 17px;
+    top: 5px;
+    right: 34px;
+    border-radius: 2px;
+    padding: 2px;
+}
+
+#galleryModal i.fa-solid.fa-arrows-up-down-left-right:hover{
+    opacity: 0;
+    transition: 0.1s
+
+}
+
+
+
+#galleryModal i.fa-sharp.fa-regular.fa-trash-can {
+    position: absolute;
+    background-color: #000000;
+    color: #ffffff;
+    width: 17px;
+    height: 17px;
+    top: 5px;
+    right: 12px;
+    border-radius: 2px;
 }
 
 #borderGray {
