@@ -166,21 +166,26 @@
 		</div>
 		<div id="modalFormBody">
 			<div id="addContent">
-				<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
+
+			<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
+
+            <button type="file" id="file" name="file" accept="">+ Ajouter photo</button>
 
 			</div>
 			<form id="form">
+				<input type="file" name="picture">
+
 				<div id="DivTitle">
 					<label class="label" for="text">Titre</label>
-					<input type="text" id="title">
+					<input type="text" id="title" name="title">
 				</div>
 				<div id="DivCategory">
-					<label class="label" for="text">Catégorie</label>
-					<input type="text" id="category">
+					<label class="label" for="category">Catégorie</label>
+					<select id="category" name="category"></select>
 				</div>
 				<hr id="grayBorder"></hr>
 				<div id="validateForm">
-
+                    <button type="submit">Valider</button>
 				</div>
 			</form>
 

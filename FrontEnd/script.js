@@ -17,11 +17,12 @@ let buttonEditClick = document.getElementsByClassName("buttonEdit");
 for (var i = 0; i < buttonEditClick.length; i++) {
   buttonEditClick[i].addEventListener("click", function () {
     let activateModal = document.getElementById("modal");
-    displayModalGallery(works);
+    
     activateModal.style.visibility = "visible";
 
     document.getElementById("overlay").style.display = "block";
   });
+  displayModalGallery(works);
 }
 
 let closedButton = document.getElementById("closed");
@@ -34,19 +35,46 @@ closedButton.addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
 });
 
+let buttonAdd = document.createElement("button");
+buttonAdd.innerHTML = "Ajouter une photo";
+document.getElementById("modalFooter").appendChild(buttonAdd);
+
+buttonAdd.addEventListener("click", function () {
+document.getElementById("modal").style.visibility = "hidden";
+    // displayModalForm();
+document.getElementById("modalForm").style.visibility = "visible";
+});
+  
+let deleteGallery = document.createElement("p");
+deleteGallery.innerHTML = "Supprimer la galerie";
+document.getElementById("modalFooter").appendChild(deleteGallery);
+
+deleteGallery.addEventListener("click", function () {
+  alert("clic valide");
+});
+
 function displayModalGallery(works) {
   for (let work of works) {
     let categoryModal = work.imageUrl;
 
+
     let divCategory = document.createElement("div");
 
-    // let iconCross = document.createElement("i");
-    // iconCross.innerHTML = camera;
-    // divCategory.appendChild(iconCross);
+    let divImage = document.createElement("div");
 
     let imageCategory = document.createElement("img");
     imageCategory.src = categoryModal;
     divCategory.appendChild(imageCategory);
+    
+    let iconCross = document.createElement("i");
+    iconCross.setAttribute("class", `fa-solid fa-arrows-up-down-left-right`);
+    divCategory.appendChild(iconCross);
+
+    let iconWasteBin = document.createElement("i");
+    iconWasteBin.setAttribute("class", "fa-sharp fa-regular fa-trash-can");
+    divCategory.appendChild(iconWasteBin);
+
+    imageCategory.appendChild(divImage);
 
     let edit = document.createElement("p");
     edit.innerHTML = "Editer";
@@ -54,28 +82,12 @@ function displayModalGallery(works) {
 
     document.getElementById("galleryModal").appendChild(divCategory);
   }
-
-  let buttonAdd = document.createElement("button");
-  buttonAdd.innerHTML = "Ajouter une photo";
-  document.getElementById("modalFooter").appendChild(buttonAdd);
-
-  buttonAdd.addEventListener("click", function () {
-    document.getElementById("modal").style.visibility = "hidden";
-    displayModalForm();
-  });
-
-  let deleteGallery = document.createElement("p");
-  deleteGallery.innerHTML = "Supprimer la galerie";
-  document.getElementById("modalFooter").appendChild(deleteGallery);
-
-  deleteGallery.addEventListener("click", function () {
-    alert("clic valide");
-  });
+  
 }
 
-function displayModalForm() {
-  document.getElementById("modalForm").style.visibility = "visible";
-}
+// function displayModalForm() {
+  
+// }
 let closedButton2 = document.getElementById("closed2");
 
 closedButton2.addEventListener("click", function () {
@@ -93,24 +105,40 @@ backModal.addEventListener("click", function () {
 
   document.getElementById("modal").style.visibility = "visible";
 });
-
-let addPictures = document.createElement("button");
-addPictures.innerHTML = "+ Ajouter photo";
-document.getElementById("addContent").appendChild(addPictures);
+// let addPictures = document.createElement("button");
+// addPictures.innerHTML = "+ Ajouter photo";
+// document.getElementById("addContent").appendChild(addPictures);
 
 let infosPicture = document.createElement("p");
 infosPicture.innerHTML = "jpg, png : 4mo max";
 document.getElementById("addContent").appendChild(infosPicture);
 
-let buttonValidate = document.createElement("button");
-buttonValidate.innerHTML = "Valider";
-document.getElementById("validateForm").appendChild(buttonValidate);
+// let buttonValidate = document.createElement("button");
+// buttonValidate.innerHTML = "Valider";
+// document.getElementById("validateForm").appendChild(buttonValidate);
 
+// let buttonValidate = document.createElement("button");
+let form = document.getElementById("form");
 
+form.addEventListener("submit", function (event) {
+  event.preventDefault;
+
+  // sortCategorie(categories);
+
+  // console.log("test");
+  // let formData = new FormData(form);
+
+  // let title = formData.get("title");
+  // let category = formData.get("category");
+
+  // console.log("title", "category", {title, category});
+});
 
 // appel à l'api grace  fetch
 const reponse = await fetch("http://localhost:5678/api/categories");
 const categories = await reponse.json();
+
+console.log(categories);
 
 let buttonAll = document.createElement("button");
 buttonAll.innerText = "Tous";
@@ -125,6 +153,11 @@ buttonAll.addEventListener("click", function (event) {
 for (let categorie of categories) {
   // on cherche name dans le tableau categorie
   let categorieName = categorie.name;
+
+  // ajout des elements options dans le select
+  let selectCategory = document.createElement("option");
+  selectCategory.innerHTML = categorieName;
+  document.getElementById("category").appendChild(selectCategory);
 
   // on creer un boutton dans HTML
   // grace a createElement
