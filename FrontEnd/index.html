@@ -165,19 +165,26 @@
 			<h2 id="h2Title">Ajout photo</h2>
 		</div>
 		<div id="modalFormBody">
-		<form id="form">
+		
+			<form id="form">
+				<div id="addContent">
+					
+					<img id="img">
 
-			<div id="addContent">
+					<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
 
-			<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
+					<input type="file" name="picture" id="inputImage" onchange="previewImg(this)"  accept=".jpg, .png">
 
-            <!-- <button type="file" id="file" name="file" accept="">+ Ajouter photo</button> -->
+					
+
+					<!-- <button type="file" id="file" name="file" accept="">+ Ajouter photo</button> -->
+					
+					<!-- <label for="picture" id="labelPicture">+ Ajouter photo</label> -->
+
+				</div>
 			
-			<!-- <label for="picture" id="labelPicture">+ Ajouter photo</label> -->
-
-			</div>
-			
-				<input type="file" name="picture" >
+				
+					
 
 				<div id="DivTitle">
 					<label class="label" for="text">Titre</label>
@@ -187,13 +194,13 @@
 					<label class="label" for="category">Catégorie</label>
 					<select id="category" name="category"></select>
 				</div>
-				<hr id="grayBorder"></hr>
-				<div id="validateForm">
-                    <button type="submit">Valider</button>
+					<hr id="grayBorder"></hr>
+					<div id="validateForm">
+					<button type="submit">Valider</button>
 				</div>
-			</form>
+			</div>
+	    </div>
 
-		</div>
 		<div id="modalFormFooter">
 
 		</div>
@@ -203,6 +210,7 @@
 <div id="overlay"></div>
 
 <script type="module" src="script.js"></script>
+<script src="script2.js"></script>
 
 </body>
 </html>

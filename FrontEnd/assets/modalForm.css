@@ -68,6 +68,11 @@
     color: #B9C5CC;
 }
 
+#img {
+    width:129px;
+    height: 193px;
+}
+
 /* input[type="file"] {
     
 }
@@ -116,6 +121,10 @@
     font-family: 'Work Sans';
     font-weight: 500;
     font-size: 14px;
+}
+
+#category option{
+    text-align: center;
 }
 
 #grayBorder {

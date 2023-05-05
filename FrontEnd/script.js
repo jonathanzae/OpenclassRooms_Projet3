@@ -5,6 +5,7 @@ const works = await reponses.json();
 
 console.log(token);
 
+// si le token est diferent de nul afficher les elements modifier
 if (token != null) {
   let buttonEdit = document.getElementsByClassName("buttonEdit");
   for (let i = 0; i < buttonEdit.length; i += 1) {
@@ -12,6 +13,7 @@ if (token != null) {
   }
 }
 
+// activer la modal et l'overlay sur le l'element "modifier"
 let buttonEditClick = document.getElementsByClassName("buttonEdit");
 
 for (var i = 0; i < buttonEditClick.length; i++) {
@@ -25,34 +27,7 @@ for (var i = 0; i < buttonEditClick.length; i++) {
   displayModalGallery(works);
 }
 
-let closedButton = document.getElementById("closed");
-
-closedButton.addEventListener("click", function () {
-  let closedModal = document.getElementById("modal");
-
-  closedModal.style.visibility = "hidden";
-
-  document.getElementById("overlay").style.display = "none";
-});
-
-let buttonAdd = document.createElement("button");
-buttonAdd.innerHTML = "Ajouter une photo";
-document.getElementById("modalFooter").appendChild(buttonAdd);
-
-buttonAdd.addEventListener("click", function () {
-  document.getElementById("modal").style.visibility = "hidden";
-  // displayModalForm();
-  document.getElementById("modalForm").style.visibility = "visible";
-});
-
-let deleteGallery = document.createElement("p");
-deleteGallery.innerHTML = "Supprimer la galerie";
-document.getElementById("modalFooter").appendChild(deleteGallery);
-
-deleteGallery.addEventListener("click", function () {
-  alert("clic valide");
-});
-
+// affichage de la gallery avec les icones ...etc
 function displayModalGallery(works) {
   for (let work of works) {
     let categoryModal = work.imageUrl;
@@ -76,12 +51,49 @@ function displayModalGallery(works) {
     divCategory.appendChild(edit);
 
     document.getElementById("galleryModal").appendChild(divCategory);
+
+    iconWasteBin.addEventListener("click", function(){
+        alert("supprimer photo ?");
+        divCategory.style.visibility = "hidden";
+    });
   }
 }
 
+// fermer la modal et l'overlay
+let closedButton = document.getElementById("closed");
+
+closedButton.addEventListener("click", function () {
+  let closedModal = document.getElementById("modal");
+
+  closedModal.style.visibility = "hidden";
+
+  document.getElementById("overlay").style.display = "none";
+});
+
+// au clic sur ajouter une photo passer a la modal Formulaire
+let buttonAdd = document.createElement("button");
+buttonAdd.innerHTML = "Ajouter une photo";
+document.getElementById("modalFooter").appendChild(buttonAdd);
+
+buttonAdd.addEventListener("click", function () {
+  document.getElementById("modal").style.visibility = "hidden";
+  // displayModalForm();
+  document.getElementById("modalForm").style.visibility = "visible";
+});
+
+// element cliquable "supprimer la galerie"
+let deleteGallery = document.createElement("p");
+deleteGallery.innerHTML = "Supprimer la galerie";
+document.getElementById("modalFooter").appendChild(deleteGallery);
+
+deleteGallery.addEventListener("click", function () {
+  alert("clic valide");
+});
 // function displayModalForm() {
 
 // }
+
+// fermer la modal de formulaire et l'overlay
 let closedButton2 = document.getElementById("closed2");
 
 closedButton2.addEventListener("click", function () {
@@ -92,6 +104,7 @@ closedButton2.addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
 });
 
+// revenir a la modal précédente 
 let backModal = document.getElementById("back");
 
 backModal.addEventListener("click", function () {
@@ -99,6 +112,11 @@ backModal.addEventListener("click", function () {
 
   document.getElementById("modal").style.visibility = "visible";
 });
+
+
+// let iconPicture = document.createElement("i");
+// iconPicture.setAttribute("class", `fa-regular fa-image`);
+// document.getElementById("addContent").appendChild(iconPicture);
 
 // let addPictures = document.createElement("button");
 // addPictures.innerHTML = "+ Ajouter photo";
@@ -108,6 +126,51 @@ let infosPicture = document.createElement("p");
 infosPicture.innerHTML = "jpg, png : 4mo max";
 document.getElementById("addContent").appendChild(infosPicture);
 
+
+// let previewImg = function(event) {
+//   var output = document.getElementById("img");
+//   output.src = URL.createObjectURL(event.target.files[0]);
+//   output.onload = function() {
+//     URL.revokeObjectURL(output.src) // free memory
+//   }
+// };
+
+// let image = document.getElementById("inputimg");
+
+// function previewImg(event) {
+
+//   const [picture] = event.files
+
+//   if (picture) {
+
+//     let reader = new FileReader();
+
+//     reader.onload = function (event) {
+//       image.src = event.target.result
+//     }
+
+//     reader.readAsDataURL(picture)
+//   }
+  
+//   let types = [ "image/jpg", "image/jpeg", "image/png" ]; 
+  
+  
+//   if (types.includes(picture.type)) {
+//       // On affiche l'image sur la page ...
+//   }
+// }
+
+// let previewImg  = function (event) {
+//   // e.files contient un objet FileList
+//   const [picture] = event.files
+
+//   // Les types de fichier autorisés
+  
+
+//   Vérification si "picture.type" se trouve dans "types"
+ 
+// }
+
 // let buttonValidate = document.createElement("button");
 // buttonValidate.innerHTML = "Valider";
 // document.getElementById("validateForm").appendChild(buttonValidate);
@@ -115,16 +178,34 @@ document.getElementById("addContent").appendChild(infosPicture);
 // let buttonValidate = document.createElement("button");
 let form = document.getElementById("form");
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault;
+form.addEventListener("submit", async function (event) {
 
-  // console.log("test");
-  // let formData = new FormData(form);
+  event.preventDefault();
 
-  // let title = formData.get("title");
-  // let category = formData.get("category");
+  let formData = new FormData(form);
 
-  // console.log("title", "category", {title, category});
+
+  let picture = formData.get("picture")
+  let title = formData.get("title");
+  let category = formData.get("category");
+
+  console.log("picture", "title", "category", {picture, title, category});
+
+  console.log("test");
+
+  let response = await fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: new FormData(form)
+  });
+
+  let result = await response.json();
+
+  console.log(response);
+  console.log(result);
+
+  
+  
+  
 });
 
 // appel à l'api grace  fetch

@@ -149,14 +149,11 @@ li:hover {
 	height: 37px;
 	
 }
-/**
-span:hover button {
+
+#filters button:hover {
 	background-color: #1D6154;
 	color:#ffff;
 }
-**/
-
-
 
 .buttons span {
 	color:#1D6154;
@@ -165,7 +162,6 @@ span:hover button {
 	font-size: medium;
 	font-family: syne;
 }
-
 
 #gallery {
 	width: 100%;
@@ -228,7 +224,7 @@ footer nav ul {
 	margin: 2em
 }
 
-
+/* boutton d'editions et overlay */
 
 .edit1 {
 	display: flex;
