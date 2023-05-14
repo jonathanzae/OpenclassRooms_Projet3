@@ -100,20 +100,22 @@
     position: absolute;
     background-color: #000000;
     color: #ffffff;
-    width: 17px;
-    height: 17px;
+    width: 12px;
+    height: 12px;
     top: 5px;
     right: 34px;
     border-radius: 2px;
     padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
 }
 
 #galleryModal i.fa-solid.fa-arrows-up-down-left-right:hover{
-    opacity: 0;
+    opacity: 1;
     transition: 0.1s
-
 }
-
 
 
 #galleryModal i.fa-sharp.fa-regular.fa-trash-can {
@@ -123,8 +125,11 @@
     width: 17px;
     height: 17px;
     top: 5px;
-    right: 12px;
+    right: 15px;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #borderGray {

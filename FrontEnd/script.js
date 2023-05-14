@@ -5,7 +5,7 @@ const works = await reponses.json();
 
 console.log(token);
 
-// si le token est diferent de nul afficher les elements modifier
+// si le token est different de nul afficher les elements modifier
 if (token != null) {
   let buttonEdit = document.getElementsByClassName("buttonEdit");
   for (let i = 0; i < buttonEdit.length; i += 1) {
@@ -35,6 +35,7 @@ function displayModalGallery(works) {
     let divCategory = document.createElement("div");
 
     let imageCategory = document.createElement("img");
+    imageCategory.setAttribute("data-id", work.id);
     imageCategory.src = categoryModal;
     divCategory.appendChild(imageCategory);
 
@@ -52,9 +53,15 @@ function displayModalGallery(works) {
 
     document.getElementById("galleryModal").appendChild(divCategory);
 
-    iconWasteBin.addEventListener("click", function(){
-        alert("supprimer photo ?");
-        divCategory.style.visibility = "hidden";
+    iconWasteBin.addEventListener("click", async function () {
+
+      let id = imageCategory.getAttribute("data-id");
+
+      await fetch("http://localhost:5678/api/works/", {
+        method: "DELETE",
+        data: {id: id},
+        headers: { Authorization: `AuthBearer ${token}` },
+      });
     });
   }
 }
@@ -104,7 +111,7 @@ closedButton2.addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
 });
 
-// revenir a la modal précédente 
+// revenir a la modal précédente
 let backModal = document.getElementById("back");
 
 backModal.addEventListener("click", function () {
@@ -112,7 +119,6 @@ backModal.addEventListener("click", function () {
 
   document.getElementById("modal").style.visibility = "visible";
 });
-
 
 // let iconPicture = document.createElement("i");
 // iconPicture.setAttribute("class", `fa-regular fa-image`);
@@ -125,7 +131,6 @@ backModal.addEventListener("click", function () {
 let infosPicture = document.createElement("p");
 infosPicture.innerHTML = "jpg, png : 4mo max";
 document.getElementById("addContent").appendChild(infosPicture);
-
 
 // let previewImg = function(event) {
 //   var output = document.getElementById("img");
@@ -151,10 +156,9 @@ document.getElementById("addContent").appendChild(infosPicture);
 
 //     reader.readAsDataURL(picture)
 //   }
-  
-//   let types = [ "image/jpg", "image/jpeg", "image/png" ]; 
-  
-  
+
+//   let types = [ "image/jpg", "image/jpeg", "image/png" ];
+
 //   if (types.includes(picture.type)) {
 //       // On affiche l'image sur la page ...
 //   }
@@ -165,10 +169,9 @@ document.getElementById("addContent").appendChild(infosPicture);
 //   const [picture] = event.files
 
 //   // Les types de fichier autorisés
-  
 
 //   Vérification si "picture.type" se trouve dans "types"
- 
+
 // }
 
 // let buttonValidate = document.createElement("button");
@@ -179,33 +182,28 @@ document.getElementById("addContent").appendChild(infosPicture);
 let form = document.getElementById("form");
 
 form.addEventListener("submit", async function (event) {
-
   event.preventDefault();
 
   let formData = new FormData(form);
 
-
-  let picture = formData.get("picture")
+  let picture = formData.get("picture");
   let title = formData.get("title");
   let category = formData.get("category");
 
-  console.log("picture", "title", "category", {picture, title, category});
+  console.log("picture", "title", "category", { picture, title, category });
 
   console.log("test");
 
-  let response = await fetch('http://localhost:5678/api/works', {
-    method: 'POST',
-    body: new FormData(form)
+  let response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: { Authorization: `AuthBearer ${token}` },
+    body: new FormData(form),
   });
 
   let result = await response.json();
 
   console.log(response);
   console.log(result);
-
-  
-  
-  
 });
 
 // appel à l'api grace  fetch
@@ -231,6 +229,7 @@ for (let categorie of categories) {
   // ajout des elements options dans le select
   let selectCategory = document.createElement("option");
   selectCategory.innerHTML = categorieName;
+  selectCategory.setAttribute("value", categorie.id);
   document.getElementById("category").appendChild(selectCategory);
 
   // on creer un boutton dans HTML
@@ -292,3 +291,29 @@ function displayWorks(worksArray) {
     document.getElementById("gallery").appendChild(figure);
   }
 }
+
+document
+  .getElementById("inputImage")
+  .addEventListener("change", function (event) {
+    let image = document.createElement("img");
+    image.setAttribute("id", "img");
+    // document.getElementById("addContent").innerHTML = "";
+    document.getElementById("addContent").appendChild(image);
+    const picture = event.target.files[0];
+
+    if (picture) {
+      let reader = new FileReader();
+
+      reader.onload = function (event) {
+        image.src = event.target.result;
+      };
+
+      reader.readAsDataURL(picture);
+    }
+
+    let types = ["image/jpg", "image/jpeg", "image/png"];
+
+    if (types.includes(picture.type)) {
+      // On affiche l'image sur la page ...
+    }
+  });
