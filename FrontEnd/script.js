@@ -53,13 +53,13 @@ function displayModalGallery(works) {
 
     document.getElementById("galleryModal").appendChild(divCategory);
 
-    iconWasteBin.addEventListener("click", async function () {
-
+    iconWasteBin.addEventListener("click", async function (event) {
+      event.preventDefault();
+      
       let id = imageCategory.getAttribute("data-id");
 
-      await fetch("http://localhost:5678/api/works/", {
+      await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
-        data: {id: id},
         headers: { Authorization: `AuthBearer ${token}` },
       });
     });
