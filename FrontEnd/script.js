@@ -1,17 +1,41 @@
+async function init(){
 let token = localStorage.getItem("token");
 
 const reponses = await fetch("http://localhost:5678/api/works");
 const works = await reponses.json();
 
-console.log(token);
-
 // si le token est different de nul afficher les elements modifier
 if (token != null) {
+  let blackMenu = document.getElementById("modalLink");
+  blackMenu.style.display = "block";
+
+  let buttonEdit1 = document.getElementById("edit1");
+  buttonEdit1.style.display = "block";
+
+  let buttonEdit2 = document.getElementById("edit2");
+  buttonEdit2.style.display = "block";
+
   let buttonEdit = document.getElementsByClassName("buttonEdit");
   for (let i = 0; i < buttonEdit.length; i += 1) {
     buttonEdit[i].style.display = "block";
   }
+
+  
+
+  document.getElementById("aLogin").innerHTML = "";
+  
+  let logout = document.createElement("a");
+  logout.innerHTML = "logout";
+  document.getElementById("aLogin").appendChild(logout);
+
+  logout.addEventListener("click", function (event){
+    // event.preventDefault();
+    localStorage.removeItem("token");
+    
+    // localStorage.clear();
+  });
 }
+
 
 // activer la modal et l'overlay sur le l'element "modifier"
 let buttonEditClick = document.getElementsByClassName("buttonEdit");
@@ -33,6 +57,7 @@ function displayModalGallery(works) {
     let categoryModal = work.imageUrl;
 
     let divCategory = document.createElement("div");
+    divCategory.setAttribute("id", "divCategory");
 
     let imageCategory = document.createElement("img");
     imageCategory.setAttribute("data-id", work.id);
@@ -128,51 +153,9 @@ backModal.addEventListener("click", function () {
 // addPictures.innerHTML = "+ Ajouter photo";
 // document.getElementById("addContent").appendChild(addPictures);
 
-let infosPicture = document.createElement("p");
-infosPicture.innerHTML = "jpg, png : 4mo max";
-document.getElementById("addContent").appendChild(infosPicture);
-
-// let previewImg = function(event) {
-//   var output = document.getElementById("img");
-//   output.src = URL.createObjectURL(event.target.files[0]);
-//   output.onload = function() {
-//     URL.revokeObjectURL(output.src) // free memory
-//   }
-// };
-
-// let image = document.getElementById("inputimg");
-
-// function previewImg(event) {
-
-//   const [picture] = event.files
-
-//   if (picture) {
-
-//     let reader = new FileReader();
-
-//     reader.onload = function (event) {
-//       image.src = event.target.result
-//     }
-
-//     reader.readAsDataURL(picture)
-//   }
-
-//   let types = [ "image/jpg", "image/jpeg", "image/png" ];
-
-//   if (types.includes(picture.type)) {
-//       // On affiche l'image sur la page ...
-//   }
-// }
-
-// let previewImg  = function (event) {
-//   // e.files contient un objet FileList
-//   const [picture] = event.files
-
-//   // Les types de fichier autorisés
-
-//   Vérification si "picture.type" se trouve dans "types"
-
-// }
+// let infosPicture = document.createElement("p");
+// infosPicture.innerHTML = "jpg, png : 4mo max";
+// document.getElementById("addContent").appendChild(infosPicture);
 
 // let buttonValidate = document.createElement("button");
 // buttonValidate.innerHTML = "Valider";
@@ -297,7 +280,8 @@ document
   .addEventListener("change", function (event) {
     let image = document.createElement("img");
     image.setAttribute("id", "img");
-    // document.getElementById("addContent").innerHTML = "";
+    document.getElementById("imgContent").style.display = "none";
+    document.getElementById("")
     document.getElementById("addContent").appendChild(image);
     const picture = event.target.files[0];
 
@@ -317,3 +301,6 @@ document
       // On affiche l'image sur la page ...
     }
   });
+}
+
+init()

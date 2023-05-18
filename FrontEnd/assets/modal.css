@@ -8,6 +8,7 @@
     top:0;
     right:0;
     left:0;
+    display: none;
 }
 
 #modalMenu {
@@ -34,7 +35,6 @@
 
 #modal{
     background-color: #ffff;
-    /* background-color: aqua; */
     position:fixed;
     top: 100px;
     left: calc(50% - 250px);
@@ -75,8 +75,8 @@
     padding-left: 60px;
     padding-right: 60px;
     padding-bottom: 20px;
-    /* overflow-y: scroll;
-    max-height: 300px; */
+    overflow-y: scroll;
+    max-height: 300px;
 }
 
 #galleryModal div{
@@ -112,7 +112,7 @@
     opacity: 0;
 }
 
-#galleryModal i.fa-solid.fa-arrows-up-down-left-right:hover{
+#divCategory:hover i.fa-solid.fa-arrows-up-down-left-right{
     opacity: 1;
     transition: 0.1s
 }
@@ -141,6 +141,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 75px;
 }
 
 #modalFooter button {

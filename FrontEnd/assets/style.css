@@ -226,26 +226,28 @@ footer nav ul {
 
 /* boutton d'editions et overlay */
 
-.edit1 {
+#edit1 {
 	display: flex;
 	padding-left: 58px;
 	padding-top: 15px;
+	display: none;
 }
 
-.buttonEditNull1 {
-	color: #000000;
-	text-decoration: none;
+#buttonEditNull1 {
+	border: 1px solid #ffff;
+	background-color: #ffff;
 }
 
-.edit2 {
+#edit2 {
+	display: none;
 	margin-bottom: 10px;
 }
 
-.buttonEditNull2{
-	color: #000000;
-	text-decoration: none;
+#buttonEditNull2 {
 	display: flex;
 	gap: 6px;
+	border: 1px solid #ffff;
+	background-color: #ffff;
 }
 
 .edit3 {
@@ -256,9 +258,9 @@ footer nav ul {
 }
 
 .buttonEdit {
-	color: #000000;
-	text-decoration: none;
 	display: none;
+	border: 1px solid #ffff;
+	background-color: #ffff;
 }
 
 #overlay {

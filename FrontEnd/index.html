@@ -37,14 +37,14 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
-		<div class="edit1">
-			<a href="#" class="buttonEditNull1"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
+		<div id="edit1">
+			<button href="#" id="buttonEditNull1"><i class="fa-regular fa-pen-to-square"></i> Modifier</button>
 		</div>
 		</figure>
 		
 		<article>
-			<div class="edit2">
-				<a href="#" class="buttonEditNull2"><i class="fa-regular fa-pen-to-square"></i> Modifier</a>
+			<div id="edit2">
+				<button href="#" id="buttonEditNull2"><i class="fa-regular fa-pen-to-square"></i> Modifier</button>
 			</div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
@@ -145,9 +145,9 @@
                 
 			</div>
 		</div>
-		<hr id="borderGray"></hr>
+		
 		<div id="modalFooter">
-
+			<hr id="borderGray"></hr>
 		</div>
 
 		
@@ -169,17 +169,18 @@
 			<form id="form">
 				<div id="addContent">
 					
+					<div id="imgContent">
 					
 
-					<a href="#" id="addPictures"><i class="fa-regular fa-image"></i></a>
+						<span id="addPictures"><i class="fa-regular fa-image"></i></span>
 
-					<input type="file" name="image" id="inputImage"  accept=".jpg, .png">
+						
+						<input type="file" name="image" id="inputImage"  accept=".jpg, .png">
+						<label for="inputImage" class="labelFile">+ Ajouter photo</label>
 
-					
+						<p id="filesInfo">jpg, png : 4mo max</p>
 
-					<!-- <button type="file" id="file" name="file" accept="">+ Ajouter photo</button> -->
-					
-					<!-- <label for="picture" id="labelPicture">+ Ajouter photo</label> -->
+					</div>
 
 				</div>
 			
@@ -209,7 +210,7 @@
 
 <div id="overlay"></div>
 
-<script type="module" src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
