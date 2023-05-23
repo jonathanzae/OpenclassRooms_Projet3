@@ -45,14 +45,15 @@ for (var i = 0; i < buttonEditClick.length; i++) {
     let activateModal = document.getElementById("modal");
 
     activateModal.style.visibility = "visible";
-
+    displayModalGallery(works);
     document.getElementById("overlay").style.display = "block";
   });
-  displayModalGallery(works);
+  
 }
 
 // affichage de la gallery avec les icones ...etc
 function displayModalGallery(works) {
+  console.log("test");
   for (let work of works) {
     let categoryModal = work.imageUrl;
 
@@ -87,9 +88,22 @@ function displayModalGallery(works) {
         method: "DELETE",
         headers: { Authorization: `AuthBearer ${token}` },
       });
+
+      supp = works.indexOf(id);
+      
+      works.splice(supp, id);
+
+      divCategory.remove(id)
+  
+      console.log(works);
+
     });
+
+    
   }
 }
+    
+  
 
 // fermer la modal et l'overlay
 let closedButton = document.getElementById("closed");
@@ -109,7 +123,6 @@ document.getElementById("modalFooter").appendChild(buttonAdd);
 
 buttonAdd.addEventListener("click", function () {
   document.getElementById("modal").style.visibility = "hidden";
-  // displayModalForm();
   document.getElementById("modalForm").style.visibility = "visible";
 });
 
@@ -121,9 +134,6 @@ document.getElementById("modalFooter").appendChild(deleteGallery);
 deleteGallery.addEventListener("click", function () {
   alert("clic valide");
 });
-// function displayModalForm() {
-
-// }
 
 // fermer la modal de formulaire et l'overlay
 let closedButton2 = document.getElementById("closed2");
@@ -172,10 +182,8 @@ form.addEventListener("submit", async function (event) {
   let picture = formData.get("picture");
   let title = formData.get("title");
   let category = formData.get("category");
-
-  console.log("picture", "title", "category", { picture, title, category });
-
-  console.log("test");
+  
+  
 
   let response = await fetch("http://localhost:5678/api/works", {
     method: "POST",
@@ -184,10 +192,28 @@ form.addEventListener("submit", async function (event) {
   });
 
   let result = await response.json();
+  
+  works.push(result);
+  displayWorks(works);
 
-  console.log(response);
   console.log(result);
+
+  let closedAfterValidate = document.getElementById("modalForm");
+  closedAfterValidate.style.visibility = "hidden";
+  document.getElementById("overlay").style.display = "none";
+ 
+  if(response.status == 400){
+    alert("Veuillez entrer un titre !")
+  }
+
 });
+
+// let titleMising = document.getElementById("title");
+  
+// if(title = ""){
+//   alert("veuillez entrer un titre !")
+// }
+
 
 // appel à l'api grace  fetch
 const reponse = await fetch("http://localhost:5678/api/categories");
