@@ -21,13 +21,14 @@ if (token != null) {
   }
 
   
-
-  document.getElementById("aLogin").innerHTML = "";
   
+  document.getElementById("aLogin").innerHTML = "";
+  // remplacer l'element login par logout en le créant après l'avoir vidé
   let logout = document.createElement("a");
   logout.innerHTML = "logout";
   document.getElementById("aLogin").appendChild(logout);
 
+  // au clic sur logout on supprime le token dans le localStorage 
   logout.addEventListener("click", function (event){
     // event.preventDefault();
     localStorage.removeItem("token");
@@ -45,6 +46,7 @@ for (var i = 0; i < buttonEditClick.length; i++) {
     let activateModal = document.getElementById("modal");
 
     activateModal.style.visibility = "visible";
+    // !!!! créer de nouveaux travaux dans la modale après fermeture !!!!!
     displayModalGallery(works);
     document.getElementById("overlay").style.display = "block";
   });
@@ -84,6 +86,7 @@ function displayModalGallery(works) {
       
       let id = imageCategory.getAttribute("data-id");
 
+      // fetch avec la methode DELETE pour supprimer une image au clic sur l'icone poubelle
       await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
         headers: { Authorization: `AuthBearer ${token}` },
@@ -94,18 +97,16 @@ function displayModalGallery(works) {
       works.splice(supp, id);
 
       divCategory.remove(id)
+
+      // ??? Comment supprimer image dans la galerie sans chargement ???
   
       console.log(works);
 
     });
-
-    
   }
 }
-    
-  
 
-// fermer la modal et l'overlay
+// fermer la modal et l'overlay sur X
 let closedButton = document.getElementById("closed");
 
 closedButton.addEventListener("click", function () {
@@ -135,7 +136,7 @@ deleteGallery.addEventListener("click", function () {
   alert("clic valide");
 });
 
-// fermer la modal de formulaire et l'overlay
+// fermer la modal de formulaire et l'overlay sur X
 let closedButton2 = document.getElementById("closed2");
 
 closedButton2.addEventListener("click", function () {
@@ -184,7 +185,7 @@ form.addEventListener("submit", async function (event) {
   let category = formData.get("category");
   
   
-
+  // methode POST avec authentification par token 
   let response = await fetch("http://localhost:5678/api/works", {
     method: "POST",
     headers: { Authorization: `AuthBearer ${token}` },
@@ -193,18 +194,24 @@ form.addEventListener("submit", async function (event) {
 
   let result = await response.json();
   
+  // ajoute élément au tableau works 
   works.push(result);
   displayWorks(works);
 
   console.log(result);
 
+  // si erreur 400 (absence de titre) lancer alerte
+  if(response.status == 400){
+    alert("Veuillez entrer un titre !");
+    // ???? Comment empecher création d'une image undefine ???
+  }
+  
+  // fermeture de la modale après clic sur boutton valider
   let closedAfterValidate = document.getElementById("modalForm");
   closedAfterValidate.style.visibility = "hidden";
   document.getElementById("overlay").style.display = "none";
  
-  if(response.status == 400){
-    alert("Veuillez entrer un titre !")
-  }
+  
 
 });
 
@@ -215,17 +222,19 @@ form.addEventListener("submit", async function (event) {
 // }
 
 
-// appel à l'api grace  fetch
+// appel à l'api grace  fetch en methode GET
 const reponse = await fetch("http://localhost:5678/api/categories");
 const categories = await reponse.json();
 
 console.log(categories);
 
+// création du boutton Tous
 let buttonAll = document.createElement("button");
 buttonAll.innerText = "Tous";
 buttonAll.setAttribute("data-id", 0);
 document.getElementById("filters").appendChild(buttonAll);
 
+// Afficher tout les traveaux au clic sur boutton tous
 buttonAll.addEventListener("click", function (event) {
   displayWorks(works);
 });
@@ -290,7 +299,6 @@ function displayWorks(worksArray) {
 
     let image = document.createElement("img");
     image.src = imageUrl;
-    // image.setAttribute("img-id", work.categoryId);
     figure.appendChild(image);
 
     let figcaptionImg = document.createElement("figcaption");
