@@ -18,9 +18,6 @@ buttonSubmit.addEventListener("submit", async function (event) {
 
   const reponse = await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
-    // mode:'cors',
-    // cache:'no-cache',
-    // credentials: 'same-origin',
     headers: {
       Accept: "application/json",
       "content-type": "application/json",
@@ -31,8 +28,6 @@ buttonSubmit.addEventListener("submit", async function (event) {
 
   console.log(login);
   console.log(body);
-
-  // let storageToken = window.localStorage.getItem(login.token);
 
   if (reponse.status == 404) {
     alert("Erreur dans l’identifiant ou le mot de passe");
