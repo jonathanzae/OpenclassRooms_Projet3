@@ -159,11 +159,6 @@ async function init() {
     let title = formData.get("title");
     let category = formData.get("category");
 
-    if (picture == undefined) {
-      alert("Veuillez ajouter une image !");
-      return false;
-    }
-
     if (title == "") {
       alert("Veuillez ajouter un titre !");
       return false;
