@@ -7,10 +7,6 @@ buttonSubmit.addEventListener("submit", async function (event) {
 
   let password = document.getElementById("password").value;
 
-  console.log(mail);
-
-  console.log(password);
-
   let body = {
     email: mail,
     password: password,
@@ -26,11 +22,11 @@ buttonSubmit.addEventListener("submit", async function (event) {
   });
   const login = await reponse.json();
 
-  console.log(login);
-  console.log(body);
-
   if (reponse.status == 404) {
-    alert("Erreur dans l’identifiant ou le mot de passe");
+    error = document.getElementById("error");
+    error.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+    error.style.color = "red";
+    
   } else {
     window.localStorage.setItem("token", login.token);
     document.location = "index.html";

@@ -52,6 +52,13 @@ label {
     color:#3D3D3D;
 }
 
+#error {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
 #loginFooter {
     margin-top:230px;
 }

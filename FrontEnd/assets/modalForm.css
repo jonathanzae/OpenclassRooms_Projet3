@@ -154,7 +154,6 @@ input[type="file"] + label{
 }
 
 #validateForm button {
-    margin-top: 15px;
     width: 237px;
     height: 36px;
     border-radius: 60px;

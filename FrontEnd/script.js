@@ -47,7 +47,6 @@ async function init() {
 
   // affichage de la gallery avec les icones ...etc
   function displayModalGallery(works) {
-    console.log("test");
     document.getElementById("galleryModal").innerHTML = "";
     for (let work of works) {
       let categoryModal = work.imageUrl;
@@ -92,8 +91,6 @@ async function init() {
         divCategory.remove(id);
 
         displayWorks(works);
-
-        console.log(works);
       });
     }
   }
@@ -106,8 +103,10 @@ async function init() {
 
     closedModal.style.visibility = "hidden";
 
-    document.getElementById("overlay").style.display = "none";
+    
   });
+
+  
 
   // au clic sur ajouter une photo passer a la modal Formulaire
   let buttonAdd = document.createElement("button");
@@ -138,6 +137,21 @@ async function init() {
 
     document.getElementById("overlay").style.display = "none";
   });
+  
+  //Fermer modal au clic sur l'exterieur
+
+  let modal = document.getElementById("modal");
+  let modalForm = document.getElementById("modalForm");
+
+  let overlay = document.getElementById("overlay")
+
+  window.addEventListener ("click", function(event){
+    if(event.target == overlay){
+      modal.style.visibility = "hidden";
+      modalForm.style.visibility = "hidden";
+      document.getElementById("overlay").style.display = "none";
+    }
+  });
 
   // revenir a la modal précédente
   let backModal = document.getElementById("back");
@@ -159,8 +173,20 @@ async function init() {
     let title = formData.get("title");
     let category = formData.get("category");
 
+   verifPicture = document.getElementById("inputImage");
+
+    if (verifPicture.value == "" ) {
+      errorPicture = document.getElementById("errorPicture");
+      errorPicture.innerHTML = "Veuillez ajouter une photo !"
+      errorPicture.style.color = "red";
+      event.preventDefault();
+      return false;
+    }
+
     if (title == "") {
-      alert("Veuillez ajouter un titre !");
+      errorTitle = document.getElementById("errorTitle");
+      errorTitle.innerHTML = "Veuillez ajouter un titre !";
+      errorTitle.style.color = "red";
       return false;
     }
 
@@ -191,8 +217,6 @@ async function init() {
   // appel à l'api grace  fetch en methode GET
   const reponse = await fetch("http://localhost:5678/api/categories");
   const categories = await reponse.json();
-
-  console.log(categories);
 
   // création du boutton Tous
   let buttonAll = document.createElement("button");
@@ -279,6 +303,7 @@ async function init() {
       let image = document.createElement("img");
       image.setAttribute("id", "img");
       document.getElementById("imgContent").style.display = "none";
+      document.getElementById("errorPicture").style.display = "none";
       document.getElementById("");
       document.getElementById("addContent").appendChild(image);
       const picture = event.target.files[0];
@@ -294,5 +319,7 @@ async function init() {
       }
     });
 }
+
+
 
 init();
