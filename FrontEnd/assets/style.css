@@ -237,6 +237,7 @@ footer nav ul {
 #buttonEditNull1 {
 	border: 1px solid #ffff;
 	background-color: #ffff;
+	cursor: pointer;
 }
 
 #edit2 {
@@ -249,6 +250,7 @@ footer nav ul {
 	gap: 6px;
 	border: 1px solid #ffff;
 	background-color: #ffff;
+	cursor: pointer;
 }
 
 .edit3 {
@@ -262,6 +264,7 @@ footer nav ul {
 	display: none;
 	border: 1px solid #ffff;
 	background-color: #ffff;
+	cursor: pointer;
 }
 
 #overlay {
